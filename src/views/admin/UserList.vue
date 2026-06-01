@@ -248,11 +248,11 @@ const submitUserForm = async () => {
 
 // 重置用户密码
 const resetUserPwd = (userId) => {
-  ElMessageBox.confirm({
-    title: '重置密码',
-    message: '确定要重置该用户的密码吗？默认密码为123456',
-    type: 'warning',
-    async confirm() {
+    ElMessageBox.confirm(
+      '确定要重置该用户的密码吗？默认密码为123456',
+      '重置密码',
+      { type: 'warning' }
+    ).then(async () => {
       try {
         await adminResetUserPwd(userId);
         ElMessage.success('密码重置成功（默认密码：123456）');
@@ -260,27 +260,25 @@ const resetUserPwd = (userId) => {
         console.error('重置密码失败:', error);
         ElMessage.error('重置密码失败');
       }
-    }
-  });
+    }).catch(() => {});
 };
 
 // 删除用户
 const deleteUser = (userId) => {
-  ElMessageBox.confirm({
-    title: '删除用户',
-    message: '确定要删除该用户吗？删除后将无法恢复！',
-    type: 'warning',
-    async confirm() {
+    ElMessageBox.confirm(
+      '确定要删除该用户吗？删除后将无法恢复！',
+      '删除用户',
+      { type: 'warning' }
+    ).then(async () => {
       try {
         await adminDeleteUser(userId);
         ElMessage.success('用户删除成功');
-        getUsers(); // 刷新列表
+        getUsers();
       } catch (error) {
         console.error('删除用户失败:', error);
         ElMessage.error('删除用户失败');
       }
-    }
-  });
+    }).catch(() => {});
 };
 </script>
 

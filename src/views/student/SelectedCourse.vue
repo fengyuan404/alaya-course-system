@@ -61,14 +61,13 @@ onMounted(() => {
 
 const getSelectedCourses = async () => {
   try {
-    // 注意：已选课程接口通常无需分页（学生选课数量有限），可直接调用
-    const res = await studentGetSelectedCourses(); // 移除分页参数
-    selectedList.value = res.data || []; // ✅ 直接取res.data（后端返回的数组）
-    total.value = selectedList.value.length; // ✅ total为数组长度（适配分页）
+    const res = await studentGetSelectedCourses();
+    console.log('getSelectedCourses response:', res);
+    const list = res.data || res;
+    selectedList.value = Array.isArray(list) ? list : [];
+    total.value = selectedList.value.length;
   } catch (error) {
     console.error('获取已选课程失败:', error);
-    selectedList.value = [];
-    total.value = 0;
   }
 };
 
@@ -86,21 +85,20 @@ const handleCurrentChange = (val) => {
 
 // 退课
 const dropCourse = (selectionId) => {
-  ElMessageBox.confirm({
-    title: '确认退课',
-    message: '确定要退选这门课程吗？',
-    type: 'warning',
-    async confirm() {
-      try {
-        await studentDropCourse(selectionId);
-        ElMessage.success('退课成功');
-        getSelectedCourses(); // 刷新列表
-      } catch (error) {
-        console.error('退课失败:', error);
-        ElMessage.error('退课失败');
-      }
+  ElMessageBox.confirm(
+    '确定要退选这门课程吗？',
+    '确认退课',
+    { type: 'warning' }
+  ).then(async () => {
+    try {
+      await studentDropCourse(selectionId);
+      ElMessage.success('退课成功');
+      await getSelectedCourses();
+    } catch (error) {
+      console.error('退课失败:', error);
+      ElMessage.error('退课失败');
     }
-  });
+  }).catch(() => {});
 };
 </script>
 

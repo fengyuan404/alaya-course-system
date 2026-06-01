@@ -110,21 +110,20 @@ const goToGradeInput = (courseId) => {
 
 // 删除课程
 const deleteCourse = (courseId) => {
-  ElMessageBox.confirm({
-    title: '确认删除',
-    message: '确定要删除这门课程吗？删除后将无法恢复！',
-    type: 'warning',
-    async confirm() {
-      try {
-        await teacherDeleteCourse(courseId);
-        ElMessage.success('课程删除成功');
-        getMyCourses(); // 刷新列表
-      } catch (error) {
-        console.error('删除课程失败:', error);
-        ElMessage.error('删除课程失败（可能已有学生选课）');
-      }
+  ElMessageBox.confirm(
+    '确定要删除这门课程吗？删除后将无法恢复！',
+    '确认删除',
+    { type: 'warning' }
+  ).then(async () => {
+    try {
+      await teacherDeleteCourse(courseId);
+      ElMessage.success('课程删除成功');
+      getMyCourses();
+    } catch (error) {
+      console.error('删除课程失败:', error);
+      ElMessage.error('删除课程失败（可能已有学生选课）');
     }
-  });
+  }).catch(() => {});
 };
 </script>
 

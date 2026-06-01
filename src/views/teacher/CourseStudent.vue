@@ -6,7 +6,7 @@
         <el-table-column label="选课ID" prop="id" width="80" />
         <el-table-column label="学生姓名" prop="student.username" />
         <el-table-column label="学号" prop="student.idCard" />
-        <el-table-column label="选课时间" prop="createTime" />
+        <el-table-column label="选课时间" prop="selectTime" />
         <el-table-column label="成绩状态" prop="gradeStatus" width="100">
           <template #default="scope">
             <el-tag v-if="scope.row.gradeStatus === '未录入'" type="warning">未录入</el-tag>
