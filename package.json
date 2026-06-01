@@ -1,0 +1,29 @@
+{
+  "name": "alaya-course-system",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "@vee-validate/i18n": "^4.15.1",
+    "@vee-validate/rules": "^4.15.1",
+    "axios": "^1.13.2",
+    "element-plus": "^2.11.8",
+    "js-cookie": "^3.0.5",
+    "pinia": "^3.0.4",
+    "qs": "^6.14.0",
+    "vee-validate": "^4.15.1",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.2.4"
+  }
+}
