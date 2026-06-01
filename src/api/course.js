@@ -23,7 +23,7 @@ export const getCourseList = (params) => {
   if (params.keyword) query.keyword = params.keyword;
   if (params.credits) query.credits = Number(params.credits);
 
-  return request.get('/api/student/courses', { params: query });
+  return request.get('/student/courses', { params: query });
 };
 
 /**

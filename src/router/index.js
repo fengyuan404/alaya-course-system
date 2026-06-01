@@ -86,6 +86,18 @@ const routes = [
         name: '成绩录入',
         meta: { role: 'TEACHER' } // 仅教师可访问
       },
+      {
+        path: 'teacher/course/:id/edit',
+        component: TeacherCourseForm,
+        name: '编辑课程',
+        meta: { role: 'TEACHER' }
+      },
+      {
+        path: 'teacher/course/:id/students',
+        component: () => import('@/views/teacher/CourseStudent.vue'),
+        name: '选课学生',
+        meta: { role: 'TEACHER' }
+      },
 
       {
         path: 'admin/users',

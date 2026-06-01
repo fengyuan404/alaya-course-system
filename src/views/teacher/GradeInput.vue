@@ -165,7 +165,7 @@ const batchSaveGrade = async () => {
   // 过滤出填写了成绩的学生
   const validGrades = studentList.value.filter(item => item.score).map(item => ({
     courseId: courseId.value,
-    studentId: studentItem.student.id,
+    studentId: item.student.id,
     score: item.score,
     level: item.level,
     comment: item.comment

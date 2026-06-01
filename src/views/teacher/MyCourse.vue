@@ -22,6 +22,7 @@
           <template #default="scope">
             <el-button type="primary" size="small" @click="goToCourseStudent(scope.row.id)">查看选课学生</el-button>
             <el-button type="warning" size="small" @click="goToGradeInput(scope.row.id)">录入成绩</el-button>
+            <el-button type="success" size="small" @click="goToEditCourse(scope.row.id)">编辑</el-button>
             <el-button type="danger" size="small" @click="deleteCourse(scope.row.id)">删除</el-button>
           </template>
         </el-table-column>
@@ -90,6 +91,11 @@ const handleCurrentChange = (val) => {
 // 跳转到创建课程页
 const goToCreateCourse = () => {
   router.push('/home/teacher/course/create');
+};
+
+// 跳转到编辑课程
+const goToEditCourse = (courseId) => {
+  router.push(`/home/teacher/course/${courseId}/edit`);
 };
 
 // 跳转到选课学生列表
