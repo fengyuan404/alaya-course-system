@@ -7,7 +7,7 @@ import request from '@/utils/request.js';
  */
 export const adminGetCourseStat = (params) => {
   return request({
-    url: '/admin/stat/courses',
+    url: '/admin/courses/stats',
     method: 'get',
     params
   });
@@ -19,7 +19,7 @@ export const adminGetCourseStat = (params) => {
  */
 export const adminGetTeachers = () => {
   return request({
-    url: '/admin/stat/teachers',
+    url: '/admin/teachers',
     method: 'get'
   });
 };

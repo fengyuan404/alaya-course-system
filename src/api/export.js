@@ -7,9 +7,9 @@ import request from '@/utils/request.js';
  */
 export const adminExportCourseStat = (params) => {
   return request({
-    url: '/admin/export/course-stat',
+    url: '/admin/courses/stats/export',
     method: 'get',
     params,
-    responseType: 'blob' // 二进制流（文件导出）
+    responseType: 'blob'
   });
 };
