@@ -18,7 +18,7 @@
         <el-table-column label="成绩" width="150">
           <template #default="scope">
             <el-input-number
-              v-model="scope.row.score" @input="scope.row.level = getLevelFromScore(scope.row.score)"
+              v-model="scope.row.score" @change="onScoreChange(scope.row, $event)"
               :min="0"
               :max="100"
               :precision="0"
@@ -108,6 +108,11 @@ const getLevelFromScore = (score) => {
   if (s >= 70) return 'C';
   if (s >= 60) return 'D';
   return 'F';
+};
+
+// 分数变更时自动计算等级（接收事件值避免 v-model 更新延迟）
+const onScoreChange = (row, value) => {
+  row.level = getLevelFromScore(value);
 };
 const getStudents = async () => {
   try {
