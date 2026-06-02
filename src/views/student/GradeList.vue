@@ -26,7 +26,11 @@
         <el-table-column label="课程名称" prop="selection.course.name" />
         <el-table-column label="学分" prop="selection.course.credits" width="80" />
         <el-table-column label="分数" prop="score" width="80" />
-        <el-table-column label="等级" prop="level" width="80" />
+        <el-table-column label="等级" width="80">
+          <template #default="scope">
+            {{ {A:'优秀',B:'良好',C:'中等',D:'及格',F:'不及格'}[scope.row.level] || scope.row.level }}
+          </template>
+        </el-table-column>
         <el-table-column label="备注" prop="comment" />
         <el-table-column label="学期" prop="selection.semester" />
         <el-table-column label="录入时间" prop="createTime" />

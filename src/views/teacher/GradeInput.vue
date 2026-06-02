@@ -18,7 +18,7 @@
         <el-table-column label="成绩" width="150">
           <template #default="scope">
             <el-input-number
-              v-model="scope.row.score"
+              v-model="scope.row.score" @input="scope.row.level = getLevelFromScore(scope.row.score)"
               :min="0"
               :max="100"
               :precision="0"
@@ -97,6 +97,18 @@ onMounted(() => {
 });
 
 // 获取选课学生列表
+
+
+// 根据分数自动计算等级
+const getLevelFromScore = (score) => {
+  const s = Number(score);
+  if (isNaN(s)) return '';
+  if (s >= 90) return 'A';
+  if (s >= 80) return 'B';
+  if (s >= 70) return 'C';
+  if (s >= 60) return 'D';
+  return 'F';
+};
 const getStudents = async () => {
   try {
     const params = {
