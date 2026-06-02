@@ -6,10 +6,9 @@
       <el-row :gutter="20">
         <el-col :span="8">
           <el-select v-model="searchForm.semester" placeholder="请选择学期">
-            <el-option label="2024-2025学年第一学期" value="2024-1" />
-            <el-option label="2024-2025学年第二学期" value="2024-2" />
-            <el-option label="2023-2024学年第一学期" value="2023-1" />
-            <el-option label="2023-2024学年第二学期" value="2023-2" />
+            <el-option label="全部" value="" />
+            <el-option label="2025-2026学年第一学期" value="2025-2026-1" />
+            <el-option label="2025-2026学年第二学期" value="2025-2026-2" />
           </el-select>
         </el-col>
         <el-col :span="4">
