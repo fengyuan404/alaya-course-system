@@ -78,7 +78,7 @@ import { ElMessage } from 'element-plus';
 
 const route = useRoute();
 const router = useRouter();
-const courseId = ref(route.params.id);
+const courseId = ref(route.params.courseId);
 
 // 搜索表单
 const searchForm = ref({
