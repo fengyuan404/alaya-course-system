@@ -78,9 +78,9 @@
               type="primary" 
               size="small" 
               @click="selectCourse(scope.row.id)" 
-              :disabled="scope.row.capacity - scope.row.selectedCount <= 0"
+              :disabled="scope.row.alreadySelected || (scope.row.selectedCount != null && scope.row.capacity - scope.row.selectedCount <= 0)"
             >
-              选课
+              {{ scope.row.alreadySelected ? '已选' : '选课' }}
             </el-button>
           </template>
         </el-table-column>
