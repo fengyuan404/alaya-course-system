@@ -10,9 +10,9 @@
         <el-col :span="6">
           <el-select v-model="searchForm.role" placeholder="用户角色">
             <el-option label="全部" value="" />
-            <el-option label="学生" value="student" />
-            <el-option label="教师" value="teacher" />
-            <el-option label="管理员" value="admin" />
+            <el-option label="学生" value="STUDENT" />
+            <el-option label="教师" value="TEACHER" />
+            <el-option label="管理员" value="ADMIN" />
           </el-select>
         </el-col>
         <el-col :span="4">
@@ -38,8 +38,8 @@
         <el-table-column label="用户名" prop="username" />
         <el-table-column label="角色" prop="role" width="100">
           <template #default="scope">
-            <el-tag :type="scope.row.role === 'admin' ? 'danger' : scope.row.role === 'teacher' ? 'warning' : 'success'">
-              {{ scope.row.role === 'student' ? '学生' : scope.row.role === 'teacher' ? '教师' : '管理员' }}
+            <el-tag :type="scope.row.role === 'ADMIN' ? 'danger' : scope.row.role === 'TEACHER' ? 'warning' : 'success'">
+              {{ scope.row.role === 'STUDENT' ? '学生' : scope.row.role === 'TEACHER' ? '教师' : '管理员' }}
             </el-tag>
           </template>
         </el-table-column>
@@ -79,9 +79,9 @@
         </el-form-item>
         <el-form-item label="角色" prop="role">
           <el-select v-model="userForm.role" placeholder="请选择角色">
-            <el-option label="学生" value="student" />
-            <el-option label="教师" value="teacher" />
-            <el-option label="管理员" value="admin" />
+            <el-option label="学生" value="STUDENT" />
+            <el-option label="教师" value="TEACHER" />
+            <el-option label="管理员" value="ADMIN" />
           </el-select>
         </el-form-item>
         <el-form-item label="学号/工号" prop="idCard">
