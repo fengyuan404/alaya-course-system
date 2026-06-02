@@ -147,16 +147,17 @@ const saveGrade = async (studentItem) => {
   }
   try {
     await teacherSaveGrade({
-      courseId: courseId.value,
+      courseId: Number(courseId.value),
       studentId: studentItem.student.id,
-      score: studentItem.score,
-      level: studentItem.level,
-      comment: studentItem.comment
+      score: Number(studentItem.score),
+      level: studentItem.level || null,
+      comment: studentItem.comment || null
     });
     ElMessage.success('成绩保存成功');
   } catch (error) {
     console.error('保存成绩失败:', error);
-    ElMessage.error('保存成绩失败');
+    const msg = error.response?.data?.message || error.response?.data || error.message || '保存成绩失败';
+    ElMessage.error(msg);
   }
 };
 
@@ -164,11 +165,11 @@ const saveGrade = async (studentItem) => {
 const batchSaveGrade = async () => {
   // 过滤出填写了成绩的学生
   const validGrades = studentList.value.filter(item => item.score).map(item => ({
-    courseId: courseId.value,
+    courseId: Number(courseId.value),
     studentId: item.student.id,
-    score: item.score,
-    level: item.level,
-    comment: item.comment
+    score: Number(item.score),
+    level: item.level || null,
+    comment: item.comment || null
   }));
 
   if (validGrades.length === 0) {
