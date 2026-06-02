@@ -24,12 +24,12 @@
     <!-- 成绩列表 -->
     <el-card class="grade-table-card" style="margin-top: 20px;">
       <el-table :data="gradeList" border stripe>
-        <el-table-column label="课程名称" prop="course.name" />
-        <el-table-column label="学分" prop="course.credits" width="80" />
+        <el-table-column label="课程名称" prop="selection.course.name" />
+        <el-table-column label="学分" prop="selection.course.credits" width="80" />
         <el-table-column label="分数" prop="score" width="80" />
         <el-table-column label="等级" prop="level" width="80" />
         <el-table-column label="备注" prop="comment" />
-        <el-table-column label="学期" prop="semester" />
+        <el-table-column label="学期" prop="selection.semester" />
         <el-table-column label="录入时间" prop="createTime" />
       </el-table>
 
@@ -78,8 +78,8 @@ const getGrades = async () => {
       semester: searchForm.value.semester
     };
     const res = await studentGetGrades(params);
-    gradeList.value = res.data.list;
-    total.value = res.data.total;
+    gradeList.value = Array.isArray(res.data) ? res.data : [];
+    total.value = gradeList.value.length;
   } catch (error) {
     console.error('获取成绩失败:', error);
     ElMessage.error('获取成绩失败');
