@@ -29,11 +29,11 @@
         <el-table-column label="等级" width="120">
           <template #default="scope">
             <el-select v-model="scope.row.level" placeholder="请选择等级">
-              <el-option label="优秀" value="优秀" />
-              <el-option label="良好" value="良好" />
-              <el-option label="中等" value="中等" />
-              <el-option label="及格" value="及格" />
-              <el-option label="不及格" value="不及格" />
+              <el-option label="优秀" value="A" />
+              <el-option label="良好" value="B" />
+              <el-option label="中等" value="C" />
+              <el-option label="及格" value="D" />
+              <el-option label="不及格" value="F" />
             </el-select>
           </template>
         </el-table-column>
