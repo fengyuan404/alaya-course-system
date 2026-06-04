@@ -70,7 +70,6 @@
         <el-table-column label="选课率" width="100">
           <template #default="scope">
             <el-progress :percentage="scope.row.selectedRate" :width="80" />
-            <span style="margin-left: 10px;">{{ scope.row.selectedRate }}%</span>
           </template>
         </el-table-column>
         <el-table-column label="学期" prop="semester" />
