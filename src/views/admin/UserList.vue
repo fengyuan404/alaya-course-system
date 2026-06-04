@@ -1,6 +1,6 @@
 <template>
   <div class="user-list-container">
-    <el-page-header content="用户管理" />
+    <el-page-header content="用户管理" @back="goBack" />
     <!-- 搜索区 -->
     <el-card class="search-card">
       <el-row :gutter="20">
@@ -101,9 +101,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { adminGetUsers, adminAddUser, adminEditUser, adminDeleteUser, adminResetUserPwd } from '@/api/user';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
+
+const router = useRouter();
 
 // 搜索表单
 const searchForm = ref({
@@ -180,6 +183,11 @@ const handleSizeChange = (val) => {
 const handleCurrentChange = (val) => {
   pageNum.value = val;
   getUsers();
+};
+
+// 返回上一页
+const goBack = () => {
+ router.go(-1);
 };
 
 // 重置搜索

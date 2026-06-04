@@ -1,6 +1,6 @@
 <template>
   <div class="my-course-container">
-    <el-page-header content="我的课程" />
+    <el-page-header content="我的课程" @back="goBack" />
     <!-- 操作区 -->
     <div class="operate-btn-group" style="margin-bottom: 20px;">
       <el-button type="primary" @click="goToCreateCourse">
@@ -101,6 +101,11 @@ const goToEditCourse = (courseId) => {
 // 跳转到选课学生列表
 const goToCourseStudent = (courseId) => {
   router.push(`/home/teacher/course/${courseId}/students`);
+};
+
+// 返回上一页
+const goBack = () => {
+ router.go(-1);
 };
 
 // 跳转到成绩录入页

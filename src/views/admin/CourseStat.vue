@@ -1,6 +1,6 @@
 <template>
   <div class="course-stat-container">
-    <el-page-header content="课程统计" />
+    <el-page-header content="课程统计" @back="goBack" />
     <!-- 筛选区 -->
     <el-card class="search-card">
       <el-row :gutter="20">
@@ -100,10 +100,13 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { adminGetCourseStat, adminGetTeachers } from '@/api/stat';
 import { adminExportCourseStat } from '@/api/export';
 import { ElMessage } from 'element-plus';
 import { Download } from '@element-plus/icons-vue';
+
+const router = useRouter();
 
 // 搜索表单
 const searchForm = ref({
@@ -131,6 +134,11 @@ onMounted(() => {
   getTeachers();
   getCourseStat();
 });
+
+// 返回上一页
+const goBack = () => {
+ router.go(-1);
+};
 
 // 获取教师列表（筛选用）
 const getTeachers = async () => {

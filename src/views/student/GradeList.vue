@@ -1,6 +1,6 @@
 <template>
   <div class="grade-list-container">
-    <el-page-header content="成绩查询" />
+    <el-page-header content="成绩查询" @back="goBack" />
     <!-- 筛选区 -->
     <el-card class="search-card">
       <el-row :gutter="20">
@@ -53,8 +53,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { studentGetGrades } from '@/api/grade';
 import { ElMessage } from 'element-plus';
+
+const router = useRouter();
 
 // 搜索表单
 const searchForm = ref({
@@ -87,6 +90,11 @@ const getGrades = async () => {
     console.error('获取成绩失败:', error);
     ElMessage.error('获取成绩失败');
   }
+};
+
+// 返回上一页
+const goBack = () => {
+ router.go(-1);
 };
 
 // 重置搜索
